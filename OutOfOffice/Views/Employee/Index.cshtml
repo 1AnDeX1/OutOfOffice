@@ -1,0 +1,44 @@
+﻿@model IEnumerable<OutOfOffice.Core.Entities.Employee>
+
+<h2>Employees</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Subdivision</th>
+            <th>Position</th>
+            <th>Status</th>
+            <th>People Partner</th>
+            <th>Out of Office Balance</th>
+            <th>Photo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.Subdivision</td>
+                <td>@item.Position</td>
+                <td>@item.Status</td>
+                <td>@item.PeoplePartnerId</td>
+                <td>@item.OutOfOfficeBalance</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Photo))
+                    {
+                        <img src="@Url.Content("~/uploads/" + item.Photo)" width="50" height="50" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Create New</a>
