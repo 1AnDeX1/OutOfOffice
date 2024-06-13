@@ -13,3 +13,4 @@ F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Data\obj\Debug\net8.0\OutOfOffice.
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Data\obj\Debug\net8.0\refint\OutOfOffice.Data.dll
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Data\obj\Debug\net8.0\OutOfOffice.Data.pdb
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Data\obj\Debug\net8.0\ref\OutOfOffice.Data.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Data\obj\Debug\net8.0\OutOfOffice.Data.sourcelink.json

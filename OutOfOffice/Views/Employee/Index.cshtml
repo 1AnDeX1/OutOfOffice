@@ -2,15 +2,92 @@
 
 <h2>Employees</h2>
 
+<form asp-action="Index" method="get" id="filterForm">
+    <input type="hidden" name="sort" value="@ViewData["CurrentSort"]" />
+    <div class="form-group filter-text">
+        <label for="FullName"></label>
+        <input name="FullName" placeholder="Full Name" value="@ViewData["FullNameFilter"]" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="Subdivision"></label>
+        <input name="Subdivision" placeholder="Subdivision" value="@ViewData["SubdivisionFilter"]" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="Position"></label>
+        <input name="Position" placeholder="Position" value="@ViewData["PositionFilter"]" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="Status"></label>
+        <input name="Status" placeholder="Status" value="@ViewData["StatusFilter"]" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="PeoplePartnerId"></label>
+        <input name="PeoplePartnerId" placeholder="People partner id" value="@ViewData["PeoplePartnerFilter"]" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="OutOfOfficeBalance"></label>
+        <input name="OutOfOfficeBalance" placeholder="Out of office balance" value="@ViewData["BalanceFilter"]" />
+    </div>
+    <button class="btn-search" type="submit" style="border-color:white">Search</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
-            <th>Full Name</th>
-            <th>Subdivision</th>
-            <th>Position</th>
-            <th>Status</th>
-            <th>People Partner</th>
-            <th>Out of Office Balance</th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["NameSortParm"]"
+                   asp-route-FullName="@ViewData["FullNameFilter"]"
+                   asp-route-Subdivision="@ViewData["SubdivisionFilter"]"
+                   asp-route-Position="@ViewData["PositionFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]"
+                   asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Full Name</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["SubdivisionSortParm"]"
+                   asp-route-FullName="@ViewData["FullNameFilter"]"
+                   asp-route-Subdivision="@ViewData["SubdivisionFilter"]"
+                   asp-route-Position="@ViewData["PositionFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]"
+                   asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Subdivision</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["PositionSortParm"]"
+                   asp-route-FullName="@ViewData["FullNameFilter"]"
+                   asp-route-Subdivision="@ViewData["SubdivisionFilter"]"
+                   asp-route-Position="@ViewData["PositionFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]"
+                   asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Position</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["StatusSortParm"]"
+                   asp-route-FullName="@ViewData["FullNameFilter"]"
+                   asp-route-Subdivision="@ViewData["SubdivisionFilter"]"
+                   asp-route-Position="@ViewData["PositionFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]"
+                   asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Status</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["PeoplePartnerSortParm"]"
+                   asp-route-FullName="@ViewData["FullNameFilter"]"
+                   asp-route-Subdivision="@ViewData["SubdivisionFilter"]"
+                   asp-route-Position="@ViewData["PositionFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]"
+                   asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">People Partner</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["BalanceSortParm"]"
+                   asp-route-FullName="@ViewData["FullNameFilter"]"
+                   asp-route-Subdivision="@ViewData["SubdivisionFilter"]"
+                   asp-route-Position="@ViewData["PositionFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]"
+                   asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Out of Office Balance</a>
+            </th>
             <th>Photo</th>
             <th></th>
         </tr>
@@ -26,15 +103,14 @@
                 <td>@item.PeoplePartnerId</td>
                 <td>@item.OutOfOfficeBalance</td>
                 <td>
-                    @if (!string.IsNullOrEmpty(item.Photo))
+                    @if (item.Photo != null && item.Photo.Length > 0)
                     {
                         <img src="@Url.Content("~/uploads/" + item.Photo)" width="50" height="50" />
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="Update" asp-route-id="@item.ID">Update</a> |
+                    <a href="#" onclick="deactivateEmployee(@item.ID)">Deactivate</a>
                 </td>
             </tr>
         }
@@ -42,3 +118,27 @@
 </table>
 
 <a asp-action="Create">Create New</a>
+
+<script>
+    function deactivateEmployee(employeeId) {
+        if (confirm("Are you sure you want to deactivate this employee?")) {
+            $.ajax({
+                url: '/Employee/Deactivate/' + employeeId,
+                type: 'POST',
+                success: function (response) {
+                    if (response.success) {
+                        alert("Employee deactivated successfully.");
+                        location.reload();
+                    } else {
+                        alert("Failed to deactivate employee. Please try again later.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    var errorMessage = xhr.status + ': ' + xhr.statusText;
+                    alert('Error - ' + errorMessage);
+                }
+            });
+        }
+    }
+</script>
+

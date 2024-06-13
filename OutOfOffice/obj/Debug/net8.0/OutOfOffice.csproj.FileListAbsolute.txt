@@ -140,3 +140,4 @@ F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\OutOfOffice.Appli
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\OutOfOffice.Data.pdb
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\OutOfOffice.Core.pdb
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\obj\Debug\net8.0\OutOfOff.61F2256D.Up2Date
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\obj\Debug\net8.0\OutOfOffice.sourcelink.json

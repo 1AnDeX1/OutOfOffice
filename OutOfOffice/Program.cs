@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.Services;
-using OutOfOffice.Infrastructure.Data;
+using OutOfOffice.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

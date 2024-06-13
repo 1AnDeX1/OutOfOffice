@@ -29,8 +29,5 @@ namespace OutOfOffice.Core.Entities
         public int OutOfOfficeBalance { get; set; }
 
         public string? Photo { get; set; }
-
-        [ForeignKey("PeoplePartnerId")]
-        public Employee PeoplePartner { get; set; }
     }
 }

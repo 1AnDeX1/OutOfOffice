@@ -1,13 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using OutOfOffice.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OutOfOffice.Infrastructure.Data
+namespace OutOfOffice.Data
 {
     public class OutOfOfficeDbContext : DbContext
     {
@@ -20,12 +14,6 @@ namespace OutOfOffice.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Employee>()
-                .HasOne(e => e.PeoplePartner)
-                .WithMany()
-                .HasForeignKey(e => e.PeoplePartnerId)
-                .OnDelete(DeleteBehavior.NoAction); // Ensure this line is present
-
             modelBuilder.Entity<LeaveRequest>()
                 .HasOne(lr => lr.Employee)
                 .WithMany()
@@ -42,7 +30,7 @@ namespace OutOfOffice.Infrastructure.Data
                 .HasOne(ar => ar.LeaveRequest)
                 .WithMany()
                 .HasForeignKey(ar => ar.LeaveRequestId)
-                .OnDelete(DeleteBehavior.NoAction); // Change to NoAction
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Project>()
                 .HasOne(p => p.ProjectManager)

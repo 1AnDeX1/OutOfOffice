@@ -9,3 +9,4 @@ F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Core\obj\Debug\net8.0\OutOfOffice.
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Core\obj\Debug\net8.0\refint\OutOfOffice.Core.dll
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Core\obj\Debug\net8.0\OutOfOffice.Core.pdb
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Core\obj\Debug\net8.0\ref\OutOfOffice.Core.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Core\obj\Debug\net8.0\OutOfOffice.Core.sourcelink.json
