@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using OutOfOffice.Application;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.Services;
 using OutOfOffice.Data;
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddDbContext<OutOfOfficeDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

@@ -1,15 +1,8 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.EntityFrameworkCore;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
 using OutOfOffice.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OutOfOffice.Application.Services
 {

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using OutOfOffice.Application.Dto.Employees;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
@@ -9,10 +11,13 @@ namespace OutOfOfficeWeb.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IMapper _mapper;
 
-        public EmployeeController(IEmployeeService employeeService) 
+        public EmployeeController(IEmployeeService employeeService,
+            IMapper mapper) 
         {
             _employeeService = employeeService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -34,7 +39,9 @@ namespace OutOfOfficeWeb.Controllers
             ViewData["PeoplePartnerFilter"] = employeeSortItems.PeoplePartnerId;
             ViewData["BalanceFilter"] = employeeSortItems.OutOfOfficeBalance;
 
-            return View(employees);
+            var employeesIndexDto = _mapper.Map< List<EmployeeIndexDto>>(employees);
+
+            return View(employeesIndexDto);
         }
 
         [HttpGet]
@@ -44,32 +51,37 @@ namespace OutOfOfficeWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Employee employee)
+        public async Task<IActionResult> Create(EmployeeIndexDto employeeIndexDto)
         {
             if (ModelState.IsValid)
             {
+                var employee = _mapper.Map<Employee>(employeeIndexDto);
                 await _employeeService.AddAsync(employee);
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(employeeIndexDto);
         }
 
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
             var employee = await _employeeService.GetByIdAsync(id);
-            return View(employee);
+
+            var employeeIndexDto = _mapper.Map<EmployeeIndexDto>(employee);
+
+            return View(employeeIndexDto);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(Employee employee)
+        public async Task<IActionResult> Update(EmployeeIndexDto employeeIndexDto)
         {
             if (ModelState.IsValid)
             {
+                var employee = _mapper.Map<Employee>(employeeIndexDto);
                 await _employeeService.UpdateAsync(employee);
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(employeeIndexDto);
         }
         
         [HttpPost]
