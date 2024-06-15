@@ -13,8 +13,7 @@ namespace OutOfOfficeWeb.Controllers
         private readonly IEmployeeService _employeeService;
         private readonly IMapper _mapper;
 
-        public EmployeeController(IEmployeeService employeeService,
-            IMapper mapper) 
+        public EmployeeController(IEmployeeService employeeService, IMapper mapper)
         {
             _employeeService = employeeService;
             _mapper = mapper;
@@ -39,7 +38,7 @@ namespace OutOfOfficeWeb.Controllers
             ViewData["PeoplePartnerFilter"] = employeeSortItems.PeoplePartnerId;
             ViewData["BalanceFilter"] = employeeSortItems.OutOfOfficeBalance;
 
-            var employeesIndexDto = _mapper.Map< List<EmployeeIndexDto>>(employees);
+            var employeesIndexDto = _mapper.Map<List<EmployeeIndexDto>>(employees);
 
             return View(employeesIndexDto);
         }
@@ -66,9 +65,12 @@ namespace OutOfOfficeWeb.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var employee = await _employeeService.GetByIdAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
 
             var employeeIndexDto = _mapper.Map<EmployeeIndexDto>(employee);
-
             return View(employeeIndexDto);
         }
 
@@ -83,14 +85,18 @@ namespace OutOfOfficeWeb.Controllers
             }
             return View(employeeIndexDto);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Deactivate(int id)
         {
             var employee = await _employeeService.GetByIdAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
             await _employeeService.DeleteAsync(employee);
-
             return Json(new { success = true });
         }
     }
+
 }

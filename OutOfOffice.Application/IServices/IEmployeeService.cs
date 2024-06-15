@@ -12,7 +12,7 @@ namespace OutOfOffice.Application.IServices
     public interface IEmployeeService
     {
         Task<IList<Employee>> GetAllAsync();
-        IQueryable<Employee> GetAllSortedWithouToList(string sort);
+        IQueryable<Employee> GetAllSortedWithoutToList(string sort);
         Task<IList<Employee>> GetAllSortedAsync(string sort);
         Task<IList<Employee>> GetAllSortedAndFilteredAsync(string sort, EmployeeSortItems employeeSortItems);
         Task AddAsync(Employee employee); 

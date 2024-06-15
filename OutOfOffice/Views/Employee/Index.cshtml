@@ -1,4 +1,5 @@
 ﻿@using OutOfOffice.Application.Dto.Employees
+@using static OutOfOffice.Core.Enums
 @model IEnumerable<EmployeeIndexDto>
 
 <h2>Employees</h2>
@@ -6,33 +7,64 @@
 <form asp-action="Index" method="get" id="filterForm">
     <input type="hidden" name="sort" value="@ViewData["CurrentSort"]" />
     <div class="form-group filter-text">
-        <label for="FullName"></label>
-        <input name="FullName" placeholder="Full Name" value="@ViewData["FullNameFilter"]" />
+        <label for="FullName">Full Name</label>
+        <input name="FullName" placeholder="Full Name" value="@ViewData["FullNameFilter"]" class="form-control" />
     </div>
     <div class="form-group filter-text">
-        <label for="Subdivision"></label>
-        <input name="Subdivision" placeholder="Subdivision" value="@ViewData["SubdivisionFilter"]" />
+        <label for="Subdivision">Subdivision</label>
+        <select name="Subdivision" class="form-control">
+            <option value="">All</option>
+            @foreach (Subdivision subdivision in Enum.GetValues(typeof(Subdivision)))
+            {
+                string subdivisionValue = subdivision.ToString();
+                bool isSelected = ViewData["SubdivisionFilter"]?.ToString() == subdivisionValue;
+                <option value="@subdivisionValue" selected="@isSelected">
+                    @subdivisionValue
+                </option>
+            }
+        </select>
     </div>
     <div class="form-group filter-text">
-        <label for="Position"></label>
-        <input name="Position" placeholder="Position" value="@ViewData["PositionFilter"]" />
+        <label for="Position">Position</label>
+        <select name="Position" class="form-control">
+            <option value="">All</option>
+            @foreach (Position position in Enum.GetValues(typeof(Position)))
+            {
+                string positionValue = position.ToString();
+                bool isSelected = ViewData["PositionFilter"]?.ToString() == positionValue;
+                <option value="@positionValue" selected="@isSelected">
+                    @positionValue
+                </option>
+            }
+        </select>
     </div>
     <div class="form-group filter-text">
-        <label for="Status"></label>
-        <input name="Status" placeholder="Status" value="@ViewData["StatusFilter"]" />
+        <label for="Status">Status</label>
+        <select name="Status" class="form-control">
+            <option value="">All</option>
+            @foreach (Status status in Enum.GetValues(typeof(Status)))
+            {
+                string statusValue = status.ToString();
+                bool isSelected = ViewData["StatusFilter"]?.ToString() == statusValue;
+                <option value="@statusValue" selected="@isSelected">
+                    @statusValue
+                </option>
+            }
+        </select>
     </div>
     <div class="form-group filter-text">
-        <label for="PeoplePartnerId"></label>
-        <input name="PeoplePartnerId" placeholder="People partner id" value="@ViewData["PeoplePartnerFilter"]" />
+        <label for="PeoplePartnerId">People Partner ID</label>
+        <input name="PeoplePartnerId" placeholder="People Partner ID" value="@ViewData["PeoplePartnerFilter"]" class="form-control" />
     </div>
     <div class="form-group filter-text">
-        <label for="OutOfOfficeBalance"></label>
-        <input name="OutOfOfficeBalance" placeholder="Out of office balance" value="@ViewData["BalanceFilter"]" />
+        <label for="OutOfOfficeBalance">Out of Office Balance</label>
+        <input name="OutOfOfficeBalance" placeholder="Out of Office Balance" value="@ViewData["BalanceFilter"]" class="form-control" />
     </div>
-    <button class="btn-search" type="submit" style="border-color:white">Search</button>
+    <button class="btn btn-primary" type="submit">Search</button>
 </form>
 
-<table class="table">
+<a class="btn btn-success" asp-action="Create">Create</a>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -42,7 +74,9 @@
                    asp-route-Position="@ViewData["PositionFilter"]"
                    asp-route-Status="@ViewData["StatusFilter"]"
                    asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
-                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Full Name</a>
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">
+                    Full Name
+                </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["SubdivisionSortParm"]"
@@ -51,7 +85,9 @@
                    asp-route-Position="@ViewData["PositionFilter"]"
                    asp-route-Status="@ViewData["StatusFilter"]"
                    asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
-                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Subdivision</a>
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">
+                    Subdivision
+                </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["PositionSortParm"]"
@@ -60,7 +96,9 @@
                    asp-route-Position="@ViewData["PositionFilter"]"
                    asp-route-Status="@ViewData["StatusFilter"]"
                    asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
-                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Position</a>
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">
+                    Position
+                </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["StatusSortParm"]"
@@ -69,7 +107,9 @@
                    asp-route-Position="@ViewData["PositionFilter"]"
                    asp-route-Status="@ViewData["StatusFilter"]"
                    asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
-                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Status</a>
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">
+                    Status
+                </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["PeoplePartnerSortParm"]"
@@ -78,7 +118,9 @@
                    asp-route-Position="@ViewData["PositionFilter"]"
                    asp-route-Status="@ViewData["StatusFilter"]"
                    asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
-                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">People Partner</a>
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">
+                    People Partner
+                </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["BalanceSortParm"]"
@@ -87,9 +129,10 @@
                    asp-route-Position="@ViewData["PositionFilter"]"
                    asp-route-Status="@ViewData["StatusFilter"]"
                    asp-route-PeoplePartnerId="@ViewData["PeoplePartnerFilter"]"
-                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">Out of Office Balance</a>
+                   asp-route-OutOfOfficeBalance="@ViewData["BalanceFilter"]">
+                    Balance
+                </a>
             </th>
-            <th>Photo</th>
             <th></th>
         </tr>
     </thead>
@@ -117,9 +160,6 @@
         }
     </tbody>
 </table>
-
-<a asp-action="Create">Create New</a>
-
 <script>
     function deactivateEmployee(employeeId) {
         if (confirm("Are you sure you want to deactivate this employee?")) {
@@ -142,4 +182,3 @@
         }
     }
 </script>
-

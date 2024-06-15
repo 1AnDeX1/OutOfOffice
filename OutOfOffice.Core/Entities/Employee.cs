@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using static OutOfOffice.Core.Enums;
 
 namespace OutOfOffice.Core.Entities
 {
@@ -14,13 +15,13 @@ namespace OutOfOffice.Core.Entities
         public string FullName { get; set; }
 
         [Required]
-        public string Subdivision { get; set; }
+        public Subdivision Subdivision { get; set; }
 
         [Required]
-        public string Position { get; set; }
+        public Position Position { get; set; }
 
         [Required]
-        public string Status { get; set; }
+        public Status Status { get; set; }
 
         [Required]
         public int PeoplePartnerId { get; set; }

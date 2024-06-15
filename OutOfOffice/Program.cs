@@ -16,6 +16,7 @@ builder.Services.AddDbContext<OutOfOfficeDbContext>(options =>
 });
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 
 var app = builder.Build();
 

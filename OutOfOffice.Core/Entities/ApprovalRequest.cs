@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OutOfOffice.Core.Enums;
 
 namespace OutOfOffice.Core.Entities
 {
@@ -21,7 +22,7 @@ namespace OutOfOffice.Core.Entities
         public int LeaveRequestId { get; set; }
 
         [Required]
-        public string Status { get; set; } = "New";
+        public Status Status { get; set; } = Status.New;
 
         public string Comment { get; set; }
 

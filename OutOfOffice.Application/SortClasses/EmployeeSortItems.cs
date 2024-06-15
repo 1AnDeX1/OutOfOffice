@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OutOfOffice.Core.Enums;
 
 namespace OutOfOffice.Application.SortClasses
 {
@@ -12,14 +13,11 @@ namespace OutOfOffice.Application.SortClasses
         [MaxLength(100)]
         public string FullName { get; set; }
 
-        [MaxLength(100)]
-        public string Subdivision { get; set; }
+        public Subdivision? Subdivision { get; set; }
 
-        [MaxLength(100)]
-        public string Position { get; set; }
+        public Position? Position { get; set; }
 
-        [MaxLength(100)]
-        public string Status { get; set; }
+        public Status? Status { get; set; }
 
         [Range(0, 1000000)]
         public int? PeoplePartnerId { get; set; }

@@ -1,58 +1,77 @@
-﻿@using OutOfOffice.Application.Dto.Employees
-@model EmployeeIndexDto
+﻿@model OutOfOffice.Application.Dto.Employees.EmployeeIndexDto
+@using OutOfOffice.Core
+@using static OutOfOffice.Core.Enums
 
-@{
-    ViewData["Title"] = "Update Employee";
-}
+<h2>Edit Employee</h2>
 
-<h2>Update Employee</h2>
+<form asp-action="Update" method="post">
+    <input type="hidden" asp-for="ID" />
 
-<h4>Employee</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <form method="post" asp-action="Update" enctype="multipart/form-data" class="form">
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Subdivision" class="control-label"></label>
-                <input asp-for="Subdivision" class="form-control" />
-                <span asp-validation-for="Subdivision" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Position" class="control-label"></label>
-                <input asp-for="Position" class="form-control" />
-                <span asp-validation-for="Position" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PeoplePartnerId" class="control-label"></label>
-                <input asp-for="PeoplePartnerId" class="form-control" />
-                <span asp-validation-for="PeoplePartnerId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OutOfOfficeBalance" class="control-label"></label>
-                <input asp-for="OutOfOfficeBalance" class="form-control" />
-                <span asp-validation-for="OutOfOfficeBalance" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn">Update</button>
-        </form>
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="form-group">
+        <label asp-for="Subdivision"></label>
+        <select asp-for="Subdivision" class="form-control">
+            @foreach (Subdivision subdivision in Enum.GetValues(typeof(Subdivision)))
+            {
+                if (subdivision == Model.Subdivision)
+                {
+                    <option value="@subdivision" selected="selected">@subdivision</option>
+                }
+                else
+                {
+                    <option value="@subdivision">@subdivision</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="Subdivision" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Position"></label>
+        <select asp-for="Position" class="form-control">
+            @foreach (Position position in Enum.GetValues(typeof(Position)))
+            {
+                if (position == Model.Position)
+                {
+                    <option value="@position" selected="selected">@position</option>
+                }
+                else
+                {
+                    <option value="@position">@position</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="Position" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" class="form-control">
+            @foreach (Status status in Enum.GetValues(typeof(Status)))
+            {
+                if (status == Model.Status)
+                {
+                    <option value="@status" selected="selected">@status</option>
+                }
+                else
+                {
+                    <option value="@status">@status</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PeoplePartnerId"></label>
+        <input asp-for="PeoplePartnerId" class="form-control" />
+        <span asp-validation-for="PeoplePartnerId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OutOfOfficeBalance"></label>
+        <input asp-for="OutOfOfficeBalance" class="form-control" />
+        <span asp-validation-for="OutOfOfficeBalance" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

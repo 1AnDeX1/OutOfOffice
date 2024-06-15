@@ -3,6 +3,7 @@ using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
 using OutOfOffice.Data;
+using static OutOfOffice.Core.Enums;
 
 namespace OutOfOffice.Application.Services
 {
@@ -31,7 +32,8 @@ namespace OutOfOffice.Application.Services
         {
             return await _context.Employees.ToListAsync();
         }
-        public IQueryable<Employee> GetAllSortedWithouToList(string sort)
+
+        public IQueryable<Employee> GetAllSortedWithoutToList(string sort)
         {
             IQueryable<Employee> employees = _context.Employees;
             employees = sort switch
@@ -52,42 +54,40 @@ namespace OutOfOffice.Application.Services
 
             return employees;
         }
+
         public async Task<IList<Employee>> GetAllSortedAsync(string sort)
         {
-            var sortedEmployees = GetAllSortedWithouToList(sort);
+            var sortedEmployees = GetAllSortedWithoutToList(sort);
             return await sortedEmployees.ToListAsync();
         }
+
         public async Task<IList<Employee>> GetAllSortedAndFilteredAsync(string sort, EmployeeSortItems employeeSortItems)
         {
-            IQueryable<Employee> employees = GetAllSortedWithouToList(sort);
+            IQueryable<Employee> employees = GetAllSortedWithoutToList(sort);
 
             if (!string.IsNullOrEmpty(employeeSortItems.FullName))
             {
-                employees = employees.Where(e => e.FullName.ToLower()
-                .StartsWith(employeeSortItems.FullName));
+                employees = employees.Where(e => e.FullName.ToLower().StartsWith(employeeSortItems.FullName.ToLower()));
             }
-            if (!string.IsNullOrEmpty(employeeSortItems.Subdivision))
+            if (employeeSortItems.Subdivision != null)
             {
-                employees = employees.Where(e => e.Subdivision.ToLower()
-                .StartsWith(employeeSortItems.Subdivision));
+                employees = employees.Where(e => e.Subdivision == employeeSortItems.Subdivision);
             }
-            if (!string.IsNullOrEmpty(employeeSortItems.Position))
+            if (employeeSortItems.Position != null)
             {
-                employees = employees.Where(e => e.Position.ToLower()
-                .StartsWith(employeeSortItems.Position));
+                employees = employees.Where(e => e.Position == employeeSortItems.Position);
             }
-            if (!string.IsNullOrEmpty(employeeSortItems.Status))
+            if (employeeSortItems.Status != null)
             {
-                employees = employees.Where(e => e.Status.ToLower()
-                .StartsWith(employeeSortItems.Status));
+                employees = employees.Where(e => e.Status == employeeSortItems.Status);
             }
             if (employeeSortItems.PeoplePartnerId.HasValue)
             {
-                employees = employees.Where(e => e.PeoplePartnerId == employeeSortItems.PeoplePartnerId);
+                employees = employees.Where(e => e.PeoplePartnerId == employeeSortItems.PeoplePartnerId.Value);
             }
             if (employeeSortItems.OutOfOfficeBalance.HasValue)
             {
-                employees = employees.Where(e => e.OutOfOfficeBalance == employeeSortItems.OutOfOfficeBalance);
+                employees = employees.Where(e => e.OutOfOfficeBalance == employeeSortItems.OutOfOfficeBalance.Value);
             }
 
             return await employees.ToListAsync();
@@ -95,7 +95,7 @@ namespace OutOfOffice.Application.Services
 
         public async Task<Employee?> GetByIdAsync(int id)
         {
-            return await _context.Employees.Where(e => e.ID == id).FirstOrDefaultAsync();
+            return await _context.Employees.FirstOrDefaultAsync(e => e.ID == id);
         }
 
         public async Task UpdateAsync(Employee employee)
@@ -103,5 +103,8 @@ namespace OutOfOffice.Application.Services
             _context.Employees.Update(employee);
             await _context.SaveChangesAsync();
         }
+
     }
+
+
 }

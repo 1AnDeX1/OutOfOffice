@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OutOfOffice.Core.Enums;
 
 namespace OutOfOffice.Application.Dto.Employees
 {
@@ -13,11 +14,11 @@ namespace OutOfOffice.Application.Dto.Employees
 
         public string FullName { get; set; }
 
-        public string Subdivision { get; set; }
+        public Subdivision Subdivision { get; set; }
 
-        public string Position { get; set; }
+        public Position Position { get; set; }
 
-        public string Status { get; set; }
+        public Status Status { get; set; }
 
         public int PeoplePartnerId { get; set; }
 

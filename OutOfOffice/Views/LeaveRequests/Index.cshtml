@@ -1,0 +1,127 @@
+﻿@using OutOfOffice.Application.Dto.LeaveRequests
+@using static OutOfOffice.Core.Enums
+@model IEnumerable<LeaveRequestIndexDto>
+
+<h2>Leave Requests</h2>
+
+<form asp-action="Index" method="get" id="filterForm">
+    <div class="form-group filter-text">
+        <label for="ID">ID</label>
+        <input name="ID" placeholder="ID" value="@ViewData["IDFilter"]" class="form-control" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="EmployeeId">Employee ID</label>
+        <input name="EmployeeId" placeholder="Employee ID" value="@ViewData["EmployeeIdFilter"]" class="form-control" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="AbsenceReason">Absence Reason</label>
+        <input name="AbsenceReason" placeholder="Absence Reason" value="@ViewData["AbsenceReasonFilter"]" class="form-control" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="StartDate">Start Date</label>
+        <input type="date" name="StartDate" value="@ViewData["StartDateFilter"]" class="form-control" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="EndDate">End Date</label>
+        <input type="date" name="EndDate" value="@ViewData["EndDateFilter"]" class="form-control" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="Status">Status</label>
+        <select name="Status" class="form-control">
+            <option value="">All</option>
+            @foreach (Status status in Enum.GetValues(typeof(Status)))
+            {
+                string statusValue = status.ToString();
+                bool isSelected = ViewData["StatusFilter"]?.ToString() == statusValue;
+                <option value="@statusValue" selected="@isSelected">
+                    @statusValue
+                </option>
+            }
+        </select>
+    </div>
+    <button class="btn-search" type="submit" style="border-color:white">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["IDSortParm"]"
+                   asp-route-ID="@ViewData["IDFilter"]"
+                   asp-route-EmployeeId="@ViewData["EmployeeIdFilter"]"
+                   asp-route-AbsenceReason="@ViewData["AbsenceReasonFilter"]"
+                   asp-route-StartDate="@ViewData["StartDateFilter"]"
+                   asp-route-EndDate="@ViewData["EndDateFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Employee ID</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["EmployeeIdSortParm"]"
+                   asp-route-ID="@ViewData["IDFilter"]"
+                   asp-route-EmployeeId="@ViewData["EmployeeIdFilter"]"
+                   asp-route-AbsenceReason="@ViewData["AbsenceReasonFilter"]"
+                   asp-route-StartDate="@ViewData["StartDateFilter"]"
+                   asp-route-EndDate="@ViewData["EndDateFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Employee ID</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["AbsenceReasonSortParm"]"
+                   asp-route-ID="@ViewData["IDFilter"]"
+                   asp-route-EmployeeId="@ViewData["EmployeeIdFilter"]"
+                   asp-route-AbsenceReason="@ViewData["AbsenceReasonFilter"]"
+                   asp-route-StartDate="@ViewData["StartDateFilter"]"
+                   asp-route-EndDate="@ViewData["EndDateFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Absence Reason</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["StartDateSortParm"]"
+                   asp-route-ID="@ViewData["IDFilter"]"
+                   asp-route-EmployeeId="@ViewData["EmployeeIdFilter"]"
+                   asp-route-AbsenceReason="@ViewData["AbsenceReasonFilter"]"
+                   asp-route-StartDate="@ViewData["StartDateFilter"]"
+                   asp-route-EndDate="@ViewData["EndDateFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Start Date</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["EndDateSortParm"]"
+                   asp-route-ID="@ViewData["IDFilter"]"
+                   asp-route-EmployeeId="@ViewData["EmployeeIdFilter"]"
+                   asp-route-AbsenceReason="@ViewData["AbsenceReasonFilter"]"
+                   asp-route-StartDate="@ViewData["StartDateFilter"]"
+                   asp-route-EndDate="@ViewData["EndDateFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">End Date</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["StatusSortParm"]"
+                   asp-route-ID="@ViewData["IDFilter"]"
+                   asp-route-EmployeeId="@ViewData["EmployeeIdFilter"]"
+                   asp-route-AbsenceReason="@ViewData["AbsenceReasonFilter"]"
+                   asp-route-StartDate="@ViewData["StartDateFilter"]"
+                   asp-route-EndDate="@ViewData["EndDateFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Status</a>
+            </th>
+            <th>Comment</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.EmployeeId</td>
+                <td>@item.AbsenceReason</td>
+                <td>@item.StartDate.ToShortDateString()</td>
+                <td>@item.EndDate.ToShortDateString()</td>
+                <td>@item.Status</td>
+                <td>@item.Comment</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.ID">Update</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Create New</a>
