@@ -26,11 +26,31 @@ namespace OutOfOffice.Core
             Intern
         }
 
-        public enum Status
+        public enum ActivityStatus
         {
             Active,
-            Inactive,
-            New
+            Inactive
+        }
+
+        public enum RequestStatus
+        {
+            New,
+            Approve,
+            Reject
+        }
+        public enum AbsenceReason
+        {
+            Illness,
+            FamilyReason
+        }
+
+        public enum ProjectType
+        {
+            Internal,
+            External,
+            Research,
+            Development,
+            Maintenance
         }
     }
 }

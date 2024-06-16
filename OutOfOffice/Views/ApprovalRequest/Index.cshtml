@@ -1,5 +1,87 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using OutOfOffice.Application.Dto.ApprovalRequest
+@using static OutOfOffice.Core.Enums
+@model List<ApprovalRequestIndexDto>
+
 @{
+    ViewData["Title"] = "Approval Requests";
 }
+
+<h2>Approval Requests</h2>
+
+<form asp-action="Index" method="get" id="filterForm">
+    <div class="form-group filter-text">
+        <label for="ApproverId">Approver ID</label>
+        <input name="approvalRequestSortItems.ApproverId" placeholder="Approver ID" value="@ViewData["ApproverIdFilter"]" class="form-control" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="LeaveRequestId">Leave Request ID</label>
+        <input name="approvalRequestSortItems.LeaveRequestId" placeholder="Leave Request ID" value="@ViewData["LeaveRequestIdFilter"]" class="form-control" />
+    </div>
+    <div class="form-group filter-text">
+        <label for="Status">Status</label>
+        <select name="Status" class="form-control">
+            <option value="">All</option>
+            @foreach (RequestStatus status in Enum.GetValues(typeof(RequestStatus)))
+            {
+                string statusValue = status.ToString();
+                bool isSelected = ViewData["StatusFilter"]?.ToString() == statusValue;
+                <option value="@statusValue" selected="@isSelected">
+                    @statusValue
+                </option>
+            }
+        </select>
+    </div>
+    <button class="btn-search" type="submit" style="border-color:white">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["IDSortParm"]"
+                   asp-route-ApproverId="@ViewData["ApproverIdFilter"]"
+                   asp-route-LeaveRequestId="@ViewData["LeaveRequestIdFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">ID</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["ApproverIdSortParm"]"
+                   asp-route-ApproverId="@ViewData["ApproverIdFilter"]"
+                   asp-route-LeaveRequestId="@ViewData["LeaveRequestIdFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Approver ID</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["LeaveRequestIdSortParm"]"
+                   asp-route-ApproverId="@ViewData["ApproverIdFilter"]"
+                   asp-route-LeaveRequestId="@ViewData["LeaveRequestIdFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Leave Request ID</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["StatusSortParm"]"
+                   asp-route-ApproverId="@ViewData["ApproverIdFilter"]"
+                   asp-route-LeaveRequestId="@ViewData["LeaveRequestIdFilter"]"
+                   asp-route-Status="@ViewData["StatusFilter"]">Status</a>
+            </th>
+            <th>Comment</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.ApproverId</td>
+                <td>@item.LeaveRequestId</td>
+                <td>@item.Status</td>
+                <td>@item.Comment</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.ID">Update</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Create New</a>

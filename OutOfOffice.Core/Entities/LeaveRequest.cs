@@ -30,7 +30,7 @@ namespace OutOfOffice.Core.Entities
         public string Comment { get; set; }
 
         [Required]
-        public Status Status { get; set; } = Status.New;
+        public RequestStatus Status { get; set; } = RequestStatus.New;
 
         [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }

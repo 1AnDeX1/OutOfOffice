@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using OutOfOffice.Application;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.Services;
+using OutOfOffice.Core.Entities;
 using OutOfOffice.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<OutOfOfficeDbContext>(options =>
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
+builder.Services.AddScoped<IApprovalRequestService, ApprovalRequestService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
 
 var app = builder.Build();
 

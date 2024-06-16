@@ -1,0 +1,58 @@
+﻿@using OutOfOffice.Application.Dto.Projects
+@model ProjectIndexDto
+
+<h2>Project Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            ID
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ID
+        </dd>
+        <dt class="col-sm-2">
+            Project Type
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ProjectType
+        </dd>
+        <dt class="col-sm-2">
+            Start Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.StartDate.ToShortDateString()
+        </dd>
+        <dt class="col-sm-2">
+            End Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EndDate?.ToShortDateString()
+        </dd>
+        <dt class="col-sm-2">
+            Project Manager ID
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ProjectManagerId
+        </dd>
+        <dt class="col-sm-2">
+            Status
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Status
+        </dd>
+        <dt class="col-sm-2">
+            Comment
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Comment
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Update" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

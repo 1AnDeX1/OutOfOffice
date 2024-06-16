@@ -132,7 +132,6 @@ namespace OutOfOffice.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("EndDate")
@@ -141,9 +140,8 @@ namespace OutOfOffice.Data.Migrations
                     b.Property<int>("ProjectManagerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProjectType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProjectType")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");

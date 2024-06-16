@@ -17,7 +17,7 @@ namespace OutOfOffice.Application.SortClasses
 
         public Position? Position { get; set; }
 
-        public Status? Status { get; set; }
+        public ActivityStatus? Status { get; set; }
 
         [Range(0, 1000000)]
         public int? PeoplePartnerId { get; set; }

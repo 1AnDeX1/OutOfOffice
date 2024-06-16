@@ -14,8 +14,18 @@
         <input name="EmployeeId" placeholder="Employee ID" value="@ViewData["EmployeeIdFilter"]" class="form-control" />
     </div>
     <div class="form-group filter-text">
-        <label for="AbsenceReason">Absence Reason</label>
-        <input name="AbsenceReason" placeholder="Absence Reason" value="@ViewData["AbsenceReasonFilter"]" class="form-control" />
+        <label for="AbsenceReason">AbsenceReason</label>
+        <select name="AbsenceReason" class="form-control">
+            <option value="">All</option>
+            @foreach (AbsenceReason status in Enum.GetValues(typeof(AbsenceReason)))
+            {
+                string reasonValue = status.ToString();
+                bool isSelected = ViewData["StatusFilter"]?.ToString() == reasonValue;
+                <option value="@reasonValue" selected="@isSelected">
+                    @reasonValue
+                </option>
+            }
+        </select>
     </div>
     <div class="form-group filter-text">
         <label for="StartDate">Start Date</label>
@@ -29,7 +39,7 @@
         <label for="Status">Status</label>
         <select name="Status" class="form-control">
             <option value="">All</option>
-            @foreach (Status status in Enum.GetValues(typeof(Status)))
+            @foreach (RequestStatus status in Enum.GetValues(typeof(RequestStatus)))
             {
                 string statusValue = status.ToString();
                 bool isSelected = ViewData["StatusFilter"]?.ToString() == statusValue;
@@ -52,7 +62,7 @@
                    asp-route-AbsenceReason="@ViewData["AbsenceReasonFilter"]"
                    asp-route-StartDate="@ViewData["StartDateFilter"]"
                    asp-route-EndDate="@ViewData["EndDateFilter"]"
-                   asp-route-Status="@ViewData["StatusFilter"]">Employee ID</a>
+                   asp-route-Status="@ViewData["StatusFilter"]">ID</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sort="@ViewData["EmployeeIdSortParm"]"

@@ -21,7 +21,5 @@ namespace OutOfOffice.Application.IServices
         Task<LeaveRequest> GetByIdAsync(int id);
 
         Task UpdateAsync(LeaveRequest leaveRequest);
-
-        Task<bool> EmployeeExistsAsync(int employeeId);
     }
 }

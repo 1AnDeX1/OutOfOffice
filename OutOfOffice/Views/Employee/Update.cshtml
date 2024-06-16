@@ -1,4 +1,4 @@
-﻿@model OutOfOffice.Application.Dto.Employees.EmployeeIndexDto
+﻿@model OutOfOffice.Application.Dto.Employees.EmployeeUpdateDto
 @using OutOfOffice.Core
 @using static OutOfOffice.Core.Enums
 
@@ -49,7 +49,7 @@
     <div class="form-group">
         <label asp-for="Status"></label>
         <select asp-for="Status" class="form-control">
-            @foreach (Status status in Enum.GetValues(typeof(Status)))
+            @foreach (ActivityStatus status in Enum.GetValues(typeof(ActivityStatus)))
             {
                 if (status == Model.Status)
                 {

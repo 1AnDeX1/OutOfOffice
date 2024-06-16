@@ -3,36 +3,24 @@
   "WorkspaceRootPath": "F:\\Work\\SmartBusiness\\OutOfOffice\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice.application\\dto\\leaverequests\\leaverequestindexdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|solutionrelative:outofoffice.application\\dto\\leaverequests\\leaverequestindexdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice.application\\sortclasses\\leaverequestsortitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|solutionrelative:outofoffice.application\\sortclasses\\leaverequestsortitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice.application\\services\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|solutionrelative:outofoffice.application\\services\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice\\controllers\\leaverequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|solutionrelative:outofoffice\\controllers\\leaverequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|solutionrelative:outofoffice\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|solutionrelative:outofoffice\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice.application\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|solutionrelative:outofoffice.application\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice.application\\iservices\\iprojectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|solutionrelative:outofoffice.application\\iservices\\iprojectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice.application\\services\\leaverequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{34AD626A-A161-48A7-9496-808A82F69400}|OutOfOffice.Application\\OutOfOffice.Application.csproj|solutionrelative:outofoffice.application\\services\\leaverequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice\\views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|solutionrelative:outofoffice\\views\\employee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice\\views\\leaverequests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F9DCE16C-9CC4-4068-A9A3-88DF333D1A86}|OutOfOffice\\OutOfOffice.csproj|solutionrelative:outofoffice\\views\\leaverequests\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6D322E98-B3B6-4639-A75C-DC085440B8DF}|OutOfOffice.Core\\OutOfOffice.Core.csproj|f:\\work\\smartbusiness\\outofoffice\\outofoffice.core\\entities\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D322E98-B3B6-4639-A75C-DC085440B8DF}|OutOfOffice.Core\\OutOfOffice.Core.csproj|solutionrelative:outofoffice.core\\entities\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,122 +29,83 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 189,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LeaveRequestSortItems.cs",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\SortClasses\\LeaveRequestSortItems.cs",
-              "RelativeDocumentMoniker": "OutOfOffice.Application\\SortClasses\\LeaveRequestSortItems.cs",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\SortClasses\\LeaveRequestSortItems.cs",
-              "RelativeToolTip": "OutOfOffice.Application\\SortClasses\\LeaveRequestSortItems.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAvAAAA",
+              "DocumentIndex": 2,
+              "Title": "ProjectController.cs",
+              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\ProjectController.cs",
+              "RelativeDocumentMoniker": "OutOfOffice\\Controllers\\ProjectController.cs",
+              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\ProjectController.cs",
+              "RelativeToolTip": "OutOfOffice\\Controllers\\ProjectController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAswCQAAABYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T18:33:50.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LeaveRequestIndexDto.cs",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Dto\\LeaveRequests\\LeaveRequestIndexDto.cs",
-              "RelativeDocumentMoniker": "OutOfOffice.Application\\Dto\\LeaveRequests\\LeaveRequestIndexDto.cs",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Dto\\LeaveRequests\\LeaveRequestIndexDto.cs",
-              "RelativeToolTip": "OutOfOffice.Application\\Dto\\LeaveRequests\\LeaveRequestIndexDto.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T18:32:35.407Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LeaveRequestService.cs",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Services\\LeaveRequestService.cs",
-              "RelativeDocumentMoniker": "OutOfOffice.Application\\Services\\LeaveRequestService.cs",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Services\\LeaveRequestService.cs",
-              "RelativeToolTip": "OutOfOffice.Application\\Services\\LeaveRequestService.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAuwCoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T18:29:30.104Z",
+              "WhenOpened": "2024-06-15T23:19:39.939Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "EmployeeService.cs",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Services\\EmployeeService.cs",
-              "RelativeDocumentMoniker": "OutOfOffice.Application\\Services\\EmployeeService.cs",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Services\\EmployeeService.cs",
-              "RelativeToolTip": "OutOfOffice.Application\\Services\\EmployeeService.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAQwD8AAABmAAAA",
+              "Title": "Project.cs",
+              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Core\\Entities\\Project.cs",
+              "RelativeDocumentMoniker": "OutOfOffice.Core\\Entities\\Project.cs",
+              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Core\\Entities\\Project.cs",
+              "RelativeToolTip": "OutOfOffice.Core\\Entities\\Project.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAADwvyEAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T18:29:24.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LeaveRequestsController.cs",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\LeaveRequestsController.cs",
-              "RelativeDocumentMoniker": "OutOfOffice\\Controllers\\LeaveRequestsController.cs",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\LeaveRequestsController.cs",
-              "RelativeToolTip": "OutOfOffice\\Controllers\\LeaveRequestsController.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwBkAAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T18:26:40.364Z",
+              "WhenOpened": "2024-06-15T23:15:20.513Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "OutOfOffice\\Controllers\\EmployeeController.cs",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "OutOfOffice\\Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAYwBYAAABNAAAA",
+              "Title": "IProjectService.cs",
+              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\IServices\\IProjectService.cs",
+              "RelativeDocumentMoniker": "OutOfOffice.Application\\IServices\\IProjectService.cs",
+              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\IServices\\IProjectService.cs",
+              "RelativeToolTip": "OutOfOffice.Application\\IServices\\IProjectService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAswA0AAABpAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T18:26:39.261Z",
+              "WhenOpened": "2024-06-15T23:14:50.033Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Views\\Employee\\Index.cshtml",
-              "RelativeDocumentMoniker": "OutOfOffice\\Views\\Employee\\Index.cshtml",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Views\\Employee\\Index.cshtml",
-              "RelativeToolTip": "OutOfOffice\\Views\\Employee\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-15T18:26:11.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Views\\LeaveRequests\\Index.cshtml",
-              "RelativeDocumentMoniker": "OutOfOffice\\Views\\LeaveRequests\\Index.cshtml",
-              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Views\\LeaveRequests\\Index.cshtml",
-              "RelativeToolTip": "OutOfOffice\\Views\\LeaveRequests\\Index.cshtml",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAUwH8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-15T18:26:10.409Z",
+              "DocumentIndex": 0,
+              "Title": "ProjectService.cs",
+              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Services\\ProjectService.cs",
+              "RelativeDocumentMoniker": "OutOfOffice.Application\\Services\\ProjectService.cs",
+              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice.Application\\Services\\ProjectService.cs",
+              "RelativeToolTip": "OutOfOffice.Application\\Services\\ProjectService.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAYwGYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-15T23:12:25.997Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 189,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeaveRequestsController.cs",
+              "DocumentMoniker": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\LeaveRequestsController.cs",
+              "RelativeDocumentMoniker": "OutOfOffice\\Controllers\\LeaveRequestsController.cs",
+              "ToolTip": "F:\\Work\\SmartBusiness\\OutOfOffice\\OutOfOffice\\Controllers\\LeaveRequestsController.cs",
+              "RelativeToolTip": "OutOfOffice\\Controllers\\LeaveRequestsController.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAiwCcAAABhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T00:35:21.59Z",
+              "EditorCaption": ""
             }
           ]
         }

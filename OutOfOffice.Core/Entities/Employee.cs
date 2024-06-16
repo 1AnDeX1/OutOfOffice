@@ -21,7 +21,7 @@ namespace OutOfOffice.Core.Entities
         public Position Position { get; set; }
 
         [Required]
-        public Status Status { get; set; }
+        public ActivityStatus Status { get; set; }
 
         [Required]
         public int PeoplePartnerId { get; set; }

@@ -14,10 +14,13 @@ namespace OutOfOffice.Application.Services
     public class LeaveRequestService : ILeaveRequestService
     {
         private readonly OutOfOfficeDbContext _context;
+        private readonly IEmployeeService _employeeService;
 
-        public LeaveRequestService(OutOfOfficeDbContext context) 
+        public LeaveRequestService(OutOfOfficeDbContext context,
+            IEmployeeService employeeService) 
         {
             _context = context;
+            _employeeService = employeeService;
         }
         public async Task<IList<LeaveRequest>> GetAllAsync()
         {
@@ -54,6 +57,10 @@ namespace OutOfOffice.Application.Services
         {
             IQueryable<LeaveRequest> leaveRequests = GetAllSortedWithoutToList(sort);
 
+            if (leaveRequestSortItems.ID.HasValue)
+            {
+                leaveRequests = leaveRequests.Where(lr => lr.ID == leaveRequestSortItems.ID.Value);
+            }
             if (leaveRequestSortItems.EmployeeId.HasValue)
             {
                 leaveRequests = leaveRequests.Where(lr => lr.EmployeeId == leaveRequestSortItems.EmployeeId.Value);
@@ -81,7 +88,7 @@ namespace OutOfOffice.Application.Services
 
         public async Task CreateAsync(LeaveRequest leaveRequest)
         {
-            if (!await EmployeeExistsAsync(leaveRequest.EmployeeId))
+            if (!await _employeeService.EmployeeExistsAsync(leaveRequest.EmployeeId))
             {
                 throw new Exception("Employee does not exist.");
             }
@@ -99,11 +106,6 @@ namespace OutOfOffice.Application.Services
         {
             _context.LeaveRequests.Update(leaveRequest);
             await _context.SaveChangesAsync();
-        }
-
-        public async Task<bool> EmployeeExistsAsync(int employeeId)
-        {
-            return await _context.Employees.AnyAsync(e => e.ID == employeeId);
         }
     }
 }

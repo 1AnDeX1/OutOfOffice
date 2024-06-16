@@ -16,7 +16,7 @@ namespace OutOfOffice.Core.Entities
         public int ID { get; set; }
 
         [Required]
-        public string ProjectType { get; set; }
+        public ProjectType ProjectType { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }
@@ -29,9 +29,9 @@ namespace OutOfOffice.Core.Entities
         [ForeignKey("ProjectManagerId")]
         public Employee ProjectManager { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         [Required]
-        public Status Status { get; set; }
+        public ActivityStatus Status { get; set; }
     }
 }

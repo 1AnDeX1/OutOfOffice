@@ -34,6 +34,7 @@ namespace OutOfOffice.Controllers
             ViewData["EndDateSortParm"] = sort == "EndDate" ? "endDate_desc" : "EndDate";
             ViewData["StatusSortParm"] = sort == "Status" ? "status_desc" : "Status";
 
+            @ViewData["IDFilter"] = leaveRequestSortItems.ID;
             ViewData["EmployeeIdFilter"] = leaveRequestSortItems.EmployeeId;
             ViewData["AbsenceReasonFilter"] = leaveRequestSortItems.AbsenceReason;
             ViewData["StartDateFilter"] = leaveRequestSortItems.StartDate?.ToString("yyyy-MM-dd");

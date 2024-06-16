@@ -50,7 +50,7 @@ namespace OutOfOfficeWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(EmployeeIndexDto employeeIndexDto)
+        public async Task<IActionResult> Create(EmployeeCreateDto employeeIndexDto)
         {
             if (ModelState.IsValid)
             {
@@ -70,20 +70,21 @@ namespace OutOfOfficeWeb.Controllers
                 return NotFound();
             }
 
-            var employeeIndexDto = _mapper.Map<EmployeeIndexDto>(employee);
-            return View(employeeIndexDto);
+            var employeeUpdateDto = _mapper.Map<EmployeeUpdateDto>(employee);
+            return View(employeeUpdateDto);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(EmployeeIndexDto employeeIndexDto)
+        public async Task<IActionResult> Update(EmployeeUpdateDto employeeUpdateDto)
         {
             if (ModelState.IsValid)
             {
-                var employee = _mapper.Map<Employee>(employeeIndexDto);
+                var employee = _mapper.Map<Employee>(employeeUpdateDto);
                 await _employeeService.UpdateAsync(employee);
                 return RedirectToAction(nameof(Index));
             }
-            return View(employeeIndexDto);
+
+            return View(employeeUpdateDto);
         }
 
         [HttpPost]

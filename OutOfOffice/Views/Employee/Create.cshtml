@@ -1,4 +1,4 @@
-﻿@model OutOfOffice.Application.Dto.Employees.EmployeeIndexDto
+﻿@model OutOfOffice.Application.Dto.Employees.EmployeeCreateDto
 @using OutOfOffice.Core
 @using static OutOfOffice.Core.Enums
 
@@ -33,7 +33,7 @@
     <div class="form-group">
         <label asp-for="Status"></label>
         <select asp-for="Status" class="form-control">
-            @foreach (var status in Enum.GetValues(typeof(Status)))
+            @foreach (var status in Enum.GetValues(typeof(ActivityStatus)))
             {
                 <option value="@status">@status</option>
             }

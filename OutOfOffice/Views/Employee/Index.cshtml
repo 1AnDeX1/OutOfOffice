@@ -42,7 +42,7 @@
         <label for="Status">Status</label>
         <select name="Status" class="form-control">
             <option value="">All</option>
-            @foreach (Status status in Enum.GetValues(typeof(Status)))
+            @foreach (ActivityStatus status in Enum.GetValues(typeof(ActivityStatus)))
             {
                 string statusValue = status.ToString();
                 bool isSelected = ViewData["StatusFilter"]?.ToString() == statusValue;

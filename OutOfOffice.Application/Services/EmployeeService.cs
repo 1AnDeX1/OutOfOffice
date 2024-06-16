@@ -33,7 +33,7 @@ namespace OutOfOffice.Application.Services
             return await _context.Employees.ToListAsync();
         }
 
-        public IQueryable<Employee> GetAllSortedWithoutToList(string sort)
+        protected IQueryable<Employee> GetAllSortedWithoutToList(string sort)
         {
             IQueryable<Employee> employees = _context.Employees;
             employees = sort switch
@@ -104,6 +104,11 @@ namespace OutOfOffice.Application.Services
             await _context.SaveChangesAsync();
         }
 
+
+        public async Task<bool> EmployeeExistsAsync(int employeeId)
+        {
+            return await _context.Employees.AnyAsync(e => e.ID == employeeId);
+        }
     }
 
 

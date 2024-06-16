@@ -9,7 +9,7 @@ namespace OutOfOffice.Application.Dto.LeaveRequests
         public int EmployeeId { get; set; }
 
         [Required]
-        public string AbsenceReason { get; set; }
+        public AbsenceReason AbsenceReason { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }
@@ -20,6 +20,6 @@ namespace OutOfOffice.Application.Dto.LeaveRequests
         public string Comment { get; set; }
 
         [Required]
-        public Status Status { get; set; }
+        public RequestStatus Status { get; set; } = RequestStatus.New;
     }
 }

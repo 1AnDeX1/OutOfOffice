@@ -9,11 +9,12 @@ namespace OutOfOffice.Application.SortClasses
 {
     public class LeaveRequestSortItems
     {
+        public int? ID { get; set; }
         public int? RequestNumber { get; set; }
         public int? EmployeeId { get; set; }
         public string AbsenceReason { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public Status? Status { get; set; }
+        public RequestStatus? Status { get; set; }
     }
 }

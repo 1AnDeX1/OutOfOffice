@@ -22,7 +22,7 @@ namespace OutOfOffice.Core.Entities
         public int LeaveRequestId { get; set; }
 
         [Required]
-        public Status Status { get; set; } = Status.New;
+        public RequestStatus Status { get; set; } = RequestStatus.New;
 
         public string Comment { get; set; }
 

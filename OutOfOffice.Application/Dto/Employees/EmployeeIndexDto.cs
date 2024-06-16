@@ -18,7 +18,7 @@ namespace OutOfOffice.Application.Dto.Employees
 
         public Position Position { get; set; }
 
-        public Status Status { get; set; }
+        public ActivityStatus Status { get; set; }
 
         public int PeoplePartnerId { get; set; }
 
