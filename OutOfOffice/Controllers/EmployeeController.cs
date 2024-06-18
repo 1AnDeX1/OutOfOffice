@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using OutOfOffice.Application.Dto.Employees;
@@ -11,12 +12,19 @@ namespace OutOfOfficeWeb.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IAccountService _accountService;
         private readonly IMapper _mapper;
+        private readonly UserManager<Employee> _userManager;
 
-        public EmployeeController(IEmployeeService employeeService, IMapper mapper)
+        public EmployeeController(IEmployeeService employeeService,
+            IMapper mapper,
+            UserManager<Employee> userManager,
+            IAccountService accountService)
         {
             _employeeService = employeeService;
             _mapper = mapper;
+            _userManager = userManager;
+            _accountService = accountService;
         }
 
         [HttpGet]
@@ -50,21 +58,26 @@ namespace OutOfOfficeWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(EmployeeCreateDto employeeIndexDto)
+        public async Task<IActionResult> Create(EmployeeCreateDto employeeCreateDto)
         {
             if (ModelState.IsValid)
             {
-                var employee = _mapper.Map<Employee>(employeeIndexDto);
-                await _employeeService.AddAsync(employee);
+                var employee = _mapper.Map<Employee>(employeeCreateDto);
+                employee.UserName = employeeCreateDto.Email;
+
+                await _accountService.CreateAsync(employee, employeeCreateDto.Password);
+
                 return RedirectToAction(nameof(Index));
+
             }
-            return View(employeeIndexDto);
+            return View(employeeCreateDto);
         }
 
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
             var employee = await _employeeService.GetByIdAsync(id);
+
             if (employee == null)
             {
                 return NotFound();
@@ -79,13 +92,18 @@ namespace OutOfOfficeWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var employee = _mapper.Map<Employee>(employeeUpdateDto);
-                await _employeeService.UpdateAsync(employee);
+                var employee = await _employeeService.GetByIdAsync(employeeUpdateDto.ID);
+                
+                _mapper.Map(employeeUpdateDto, employee);
+
+                await _accountService.UpdateAsync(employee);
+
                 return RedirectToAction(nameof(Index));
             }
 
             return View(employeeUpdateDto);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Deactivate(int id)
@@ -96,7 +114,24 @@ namespace OutOfOfficeWeb.Controllers
                 return NotFound();
             }
             await _employeeService.DeleteAsync(employee);
+
+            var currentRoles = await _userManager.GetRolesAsync(employee);
+            await _userManager.RemoveFromRolesAsync(employee, currentRoles);
+
             return Json(new { success = true });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var employee = await _employeeService.GetByIdAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            var employeeDetailsDto = _mapper.Map<EmployeeDetailsDto>(employee);
+            return View(employeeDetailsDto);
         }
     }
 

@@ -1,11 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OutOfOffice.Core.Entities;
 
 namespace OutOfOffice.Data
 {
-    public class OutOfOfficeDbContext : DbContext
+    public class OutOfOfficeDbContext : IdentityDbContext<Employee, IdentityRole<int>, int>
     {
-        public OutOfOfficeDbContext(DbContextOptions options) :base(options) { }
+        public OutOfOfficeDbContext(DbContextOptions<OutOfOfficeDbContext> options) 
+            :base(options) { }
         
         public DbSet<Employee> Employees { get; set; }
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
@@ -14,6 +17,8 @@ namespace OutOfOffice.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<LeaveRequest>()
                 .HasOne(lr => lr.Employee)
                 .WithMany()

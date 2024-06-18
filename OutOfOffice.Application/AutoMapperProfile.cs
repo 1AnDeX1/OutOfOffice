@@ -21,6 +21,8 @@ namespace OutOfOffice.Application
             .ReverseMap();
             CreateMap<Employee, EmployeeUpdateDto>()
             .ReverseMap();
+            CreateMap<Employee, EmployeeDetailsDto>()
+            .ReverseMap();
 
             CreateMap<LeaveRequest, LeaveRequestIndexDto>()
             .ReverseMap();

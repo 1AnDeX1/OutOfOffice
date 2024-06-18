@@ -10,7 +10,7 @@ namespace OutOfOffice.Core
     {
         public enum Subdivision
         {
-            HR,
+            None,
             IT,
             Sales,
             Marketing,
@@ -19,11 +19,10 @@ namespace OutOfOffice.Core
 
         public enum Position
         {
-            Manager,
-            Developer,
-            Analyst,
-            Consultant,
-            Intern
+            Employee,
+            HRManager,
+            ProjectManager,
+            Administrator
         }
 
         public enum ActivityStatus

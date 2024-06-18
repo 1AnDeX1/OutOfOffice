@@ -18,12 +18,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = F:\Work\SmartBusiness\OutOfOffice\OutOfOffice
 build_property._RazorSourceGeneratorDebug = 
 
+[F:/Work/SmartBusiness/OutOfOffice/OutOfOffice/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Work/SmartBusiness/OutOfOffice/OutOfOffice/Views/ApprovalRequest/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwcm92YWxSZXF1ZXN0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Work/SmartBusiness/OutOfOffice/OutOfOffice/Views/Employee/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Work/SmartBusiness/OutOfOffice/OutOfOffice/Views/Employee/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Work/SmartBusiness/OutOfOffice/OutOfOffice/Views/Employee/Index.cshtml]

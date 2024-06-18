@@ -124,10 +124,33 @@
                 <td>
                     <a asp-action="Update" asp-route-id="@item.ID">Update</a> |
                     <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a href="#" onclick="deactivateProject(@item.ID)">Deactivate</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 <a asp-action="Create">Create New Project</a>
+
+<script>
+    function deactivateProject(projectId) {
+        if (confirm("Are you sure you want to deactivate this project?")) {
+            $.ajax({
+                url: '/Project/Deactivate/' + projectId,
+                type: 'POST',
+                success: function (response) {
+                    if (response.success) {
+                        alert("Project deactivated successfully.");
+                        location.reload();
+                    } else {
+                        alert("Failed to deactivate project. Please try again later.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    var errorMessage = xhr.status + ': ' + xhr.statusText;
+                    alert('Error - ' + errorMessage);
+                }
+            });
+        }
+    }
+</script>

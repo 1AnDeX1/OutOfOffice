@@ -1,15 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using static OutOfOffice.Core.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace OutOfOffice.Core.Entities
 {
-    public class Employee
+    public class Employee : IdentityUser<int>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-
         [Required]
         [MaxLength(100)]
         public string FullName { get; set; }

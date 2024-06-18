@@ -143,3 +143,9 @@ F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\obj\Debug\net8.0\OutOfOff.61F2256D
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\obj\Debug\net8.0\OutOfOffice.sourcelink.json
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\AutoMapper.dll
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

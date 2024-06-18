@@ -31,5 +31,13 @@ namespace OutOfOffice.Application.Dto.Employees
         public int OutOfOfficeBalance { get; set; }
 
         public string? Photo { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

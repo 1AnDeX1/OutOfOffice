@@ -95,7 +95,7 @@ namespace OutOfOffice.Application.Services
 
         public async Task<Employee?> GetByIdAsync(int id)
         {
-            return await _context.Employees.FirstOrDefaultAsync(e => e.ID == id);
+            return await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task UpdateAsync(Employee employee)
@@ -107,7 +107,7 @@ namespace OutOfOffice.Application.Services
 
         public async Task<bool> EmployeeExistsAsync(int employeeId)
         {
-            return await _context.Employees.AnyAsync(e => e.ID == employeeId);
+            return await _context.Employees.AnyAsync(e => e.Id == employeeId);
         }
     }
 

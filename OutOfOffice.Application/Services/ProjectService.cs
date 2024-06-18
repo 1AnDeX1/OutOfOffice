@@ -101,14 +101,10 @@ namespace OutOfOffice.Application.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Project project)
         {
-            var project = await _context.Projects.FindAsync(id);
-            if (project != null)
-            {
-                _context.Projects.Remove(project);
-                await _context.SaveChangesAsync();
-            }
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
         }
 
     }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OutOfOffice.Core.Enums;
 
 namespace OutOfOffice.Application.Services
 {
@@ -89,5 +90,4 @@ namespace OutOfOffice.Application.Services
             return approvalRequests;
         }
     }
-
 }

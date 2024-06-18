@@ -19,7 +19,7 @@ namespace OutOfOffice.Core.Entities
         public int EmployeeId { get; set; }
 
         [Required]
-        public string AbsenceReason { get; set; }
+        public AbsenceReason AbsenceReason { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }

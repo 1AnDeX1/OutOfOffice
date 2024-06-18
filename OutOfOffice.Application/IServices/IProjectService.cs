@@ -15,6 +15,6 @@ namespace OutOfOffice.Application.IServices
         Task<Project> GetByIdAsync(int id);
         Task CreateAsync(Project project);
         Task UpdateAsync(Project project);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Project project);
     }
 }

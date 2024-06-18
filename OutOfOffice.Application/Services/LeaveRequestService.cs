@@ -65,9 +65,9 @@ namespace OutOfOffice.Application.Services
             {
                 leaveRequests = leaveRequests.Where(lr => lr.EmployeeId == leaveRequestSortItems.EmployeeId.Value);
             }
-            if (!string.IsNullOrEmpty(leaveRequestSortItems.AbsenceReason))
+            if (leaveRequestSortItems.AbsenceReason != null)
             {
-                leaveRequests = leaveRequests.Where(lr => lr.AbsenceReason.ToLower().StartsWith(leaveRequestSortItems.AbsenceReason.ToLower()));
+                leaveRequests = leaveRequests.Where(lr => lr.AbsenceReason == leaveRequestSortItems.AbsenceReason);
             }
             if (leaveRequestSortItems.StartDate.HasValue)
             {

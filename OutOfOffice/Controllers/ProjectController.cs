@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OutOfOffice.Application.Dto.Projects;
 using OutOfOffice.Application.IServices;
+using OutOfOffice.Application.Services;
 using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
 
@@ -91,6 +92,18 @@ namespace OutOfOffice.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(projectUpdateDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Deactivate(int id)
+        {
+            var project = await _projectService.GetByIdAsync(id);
+            if (project == null)
+            {
+                return NotFound();
+            }
+            await _projectService.DeleteAsync(project);
+            return Json(new { success = true });
         }
 
         [HttpGet]
