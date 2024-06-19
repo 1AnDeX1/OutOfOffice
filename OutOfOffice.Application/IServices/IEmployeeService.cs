@@ -25,6 +25,6 @@ namespace OutOfOffice.Application.IServices
 
         Task<Employee?> GetByIdAsync(int id);
 
-        Task<bool> EmployeeExistsAsync(int employeeId);
+        Task<bool> EmployeeExistsAsync(int? employeeId);
     }
 }

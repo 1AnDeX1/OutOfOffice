@@ -15,12 +15,14 @@ namespace OutOfOffice.Application.Dto.LeaveRequests
         public AbsenceReason AbsenceReason { get; set; }
 
         [Required]
+        [MyStartDateValidation]
         public DateTime StartDate { get; set; }
 
         [Required]
+        [MyStartDateValidation]
         public DateTime EndDate { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         [Required]
         public RequestStatus Status { get; set; }

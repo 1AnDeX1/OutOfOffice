@@ -34,8 +34,10 @@ namespace OutOfOffice.Core
         public enum RequestStatus
         {
             New,
-            Approve,
-            Reject
+            Submitted,
+            Canceled,
+            Approved,
+            Rejected
         }
         public enum AbsenceReason
         {

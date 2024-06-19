@@ -163,11 +163,10 @@ namespace OutOfOffice.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("ApproverId")
+                    b.Property<int?>("ApproverId")
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LeaveRequestId")
@@ -288,7 +287,6 @@ namespace OutOfOffice.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmployeeId")
@@ -341,6 +339,21 @@ namespace OutOfOffice.Data.Migrations
                     b.HasIndex("ProjectManagerId");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("OutOfOffice.Core.Entities.ProjectAssignment", b =>
+                {
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProjectId", "EmployeeId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("ProjectAssignments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -399,8 +412,7 @@ namespace OutOfOffice.Data.Migrations
                     b.HasOne("OutOfOffice.Core.Entities.Employee", "Approver")
                         .WithMany()
                         .HasForeignKey("ApproverId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("OutOfOffice.Core.Entities.LeaveRequest", "LeaveRequest")
                         .WithMany()
@@ -433,6 +445,35 @@ namespace OutOfOffice.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("ProjectManager");
+                });
+
+            modelBuilder.Entity("OutOfOffice.Core.Entities.ProjectAssignment", b =>
+                {
+                    b.HasOne("OutOfOffice.Core.Entities.Employee", "Employee")
+                        .WithMany("ProjectAssignments")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("OutOfOffice.Core.Entities.Project", "Project")
+                        .WithMany("ProjectAssignments")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("OutOfOffice.Core.Entities.Employee", b =>
+                {
+                    b.Navigation("ProjectAssignments");
+                });
+
+            modelBuilder.Entity("OutOfOffice.Core.Entities.Project", b =>
+                {
+                    b.Navigation("ProjectAssignments");
                 });
 #pragma warning restore 612, 618
         }

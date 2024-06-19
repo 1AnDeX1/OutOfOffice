@@ -6,6 +6,7 @@ using OutOfOffice.Application.Dto.Employees;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
+using System.Security.Claims;
 
 namespace OutOfOfficeWeb.Controllers
 {
@@ -31,7 +32,7 @@ namespace OutOfOfficeWeb.Controllers
         public async Task<IActionResult> Index(string sort, EmployeeSortItems employeeSortItems)
         {
             var employees = await _employeeService.GetAllSortedAndFilteredAsync(sort, employeeSortItems);
-
+            
             ViewData["NameSortParm"] = string.IsNullOrEmpty(sort) ? "name_desc" : "";
             ViewData["SubdivisionSortParm"] = sort == "Subdivision" ? "subdivision_desc" : "Subdivision";
             ViewData["PositionSortParm"] = sort == "Position" ? "position_desc" : "Position";

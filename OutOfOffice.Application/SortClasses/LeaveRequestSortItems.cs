@@ -12,7 +12,7 @@ namespace OutOfOffice.Application.SortClasses
         public int? ID { get; set; }
         public int? RequestNumber { get; set; }
         public int? EmployeeId { get; set; }
-        public AbsenceReason AbsenceReason { get; set; }
+        public AbsenceReason? AbsenceReason { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public RequestStatus? Status { get; set; }

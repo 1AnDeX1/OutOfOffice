@@ -1,4 +1,5 @@
-﻿@using OutOfOffice.Application.Dto.Projects
+﻿@using OutOfOffice.Application.Dto.Employees
+@using OutOfOffice.Application.Dto.Projects
 @model ProjectIndexDto
 
 <h2>Project Details</h2>
@@ -56,3 +57,48 @@
     <a asp-action="Update" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<h4>Assigned Employees</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            @if (User.IsInRole("Project Manager") || User.IsInRole("Administrator"))
+            {
+                <th>Action</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model.AssignedEmployees ?? new List<ProjectEmployeeDto>())
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.FullName</td>
+                @if (User.IsInRole("Project Manager") || User.IsInRole("Administrator"))
+                {
+                    <td>
+                        <form asp-action="RemoveEmployee" method="post">
+                            <input type="hidden" name="projectId" value="@Model.ID" />
+                            <input type="hidden" name="employeeId" value="@employee.Id" />
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+@if (User.IsInRole("Project Manager") || User.IsInRole("Administrator"))
+{
+    <h4>Assign Employee</h4>
+    <form asp-action="AssignEmployee" method="post">
+        <div class="form-group">
+            <label for="employeeId">Employee ID</label>
+            <input type="number" name="employeeId" class="form-control" required />
+        </div>
+        <input type="hidden" name="projectId" value="@Model.ID" />
+        <button type="submit" class="btn btn-primary">Assign</button>
+    </form>
+}

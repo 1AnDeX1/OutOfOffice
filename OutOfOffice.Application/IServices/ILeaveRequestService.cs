@@ -21,5 +21,11 @@ namespace OutOfOffice.Application.IServices
         Task<LeaveRequest> GetByIdAsync(int id);
 
         Task UpdateAsync(LeaveRequest leaveRequest);
+
+        Task SubmitAsync(int leaveRequestId);
+
+        Task CancelAsync(int leaveRequestId);
+
+        IList<LeaveRequest> GetAllForCurrentEmployee(IList<LeaveRequest> leaveRequests, int curUserId);
     }
 }

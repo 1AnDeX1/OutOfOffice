@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using OutOfOffice.Application.Dto.ApprovalRequest;
 using OutOfOffice.Application.Dto.Employees;
 using OutOfOffice.Application.Dto.LeaveRequests;
 using OutOfOffice.Application.Dto.Projects;
@@ -36,6 +37,9 @@ namespace OutOfOffice.Application
             CreateMap<Project, ProjectCreateDto>()
             .ReverseMap();
             CreateMap<Project, ProjectUpdateDto>()
+            .ReverseMap();
+
+            CreateMap<ApprovalRequest, ApprovalRequestIndexDto>()
             .ReverseMap();
         }
     }

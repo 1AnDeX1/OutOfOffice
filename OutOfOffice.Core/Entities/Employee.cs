@@ -27,5 +27,7 @@ namespace OutOfOffice.Core.Entities
         public int OutOfOfficeBalance { get; set; }
 
         public string? Photo { get; set; }
+
+        public ICollection<ProjectAssignment> ProjectAssignments { get; set; }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OutOfOffice.Application.Dto.LeaveRequests;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.Services;
 using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
+using System;
+using System.Security.Claims;
 
 namespace OutOfOffice.Controllers
 {
@@ -13,20 +16,32 @@ namespace OutOfOffice.Controllers
     {
         private readonly ILeaveRequestService _leaveRequestService;
         private readonly IEmployeeService _employeeService;
+        private readonly UserManager<Employee> _userManager;
         private readonly IMapper _mapper;
 
         public LeaveRequestsController(ILeaveRequestService leaveRequestsService,
             IEmployeeService employeeService,
+            UserManager<Employee> userManager,
             IMapper mapper)
         {
             _leaveRequestService = leaveRequestsService;
             _employeeService = employeeService;
+            _userManager = userManager;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> Index(string sort, LeaveRequestSortItems leaveRequestSortItems)
         {
+            var curUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var curEmployee = await _employeeService.GetByIdAsync(curUserId);
+
             var leaveRequests = await _leaveRequestService.GetAllSortedAndFilteredAsync(sort, leaveRequestSortItems);
+
+            if (curEmployee.Position == Core.Enums.Position.Employee)
+            {
+                leaveRequests = _leaveRequestService.GetAllForCurrentEmployee(leaveRequests, curUserId);
+            }
 
             ViewData["IDSortParm"] = sort == "ID" ? "ID_desc" : "ID";
             ViewData["EmployeeIdSortParm"] = sort == "EmployeeId" ? "employeeId_desc" : "EmployeeId";
@@ -35,7 +50,7 @@ namespace OutOfOffice.Controllers
             ViewData["EndDateSortParm"] = sort == "EndDate" ? "endDate_desc" : "EndDate";
             ViewData["StatusSortParm"] = sort == "Status" ? "status_desc" : "Status";
 
-            @ViewData["IDFilter"] = leaveRequestSortItems.ID;
+            ViewData["IDFilter"] = leaveRequestSortItems.ID;
             ViewData["EmployeeIdFilter"] = leaveRequestSortItems.EmployeeId;
             ViewData["AbsenceReasonFilter"] = leaveRequestSortItems.AbsenceReason;
             ViewData["StartDateFilter"] = leaveRequestSortItems.StartDate?.ToString("yyyy-MM-dd");
@@ -63,7 +78,12 @@ namespace OutOfOffice.Controllers
 
             try
             {
+                var curUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+                leaveRequestCreateDto.EmployeeId = curUserId;
+
                 var leaveRequest = _mapper.Map<LeaveRequest>(leaveRequestCreateDto);
+
                 await _leaveRequestService.CreateAsync(leaveRequest);
                 return RedirectToAction(nameof(Index));
             }
@@ -109,6 +129,36 @@ namespace OutOfOffice.Controllers
             var leaveRequestsIndexDto = _mapper.Map<LeaveRequestIndexDto>(leaveRequest);
 
             return View(leaveRequestsIndexDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Submit(int id)
+        {
+            try
+            {
+                await _leaveRequestService.SubmitAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Cancel(int id)
+        {
+            try
+            {
+                await _leaveRequestService.CancelAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }

@@ -15,8 +15,7 @@ namespace OutOfOffice.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
-        public int ApproverId { get; set; }
+        public int? ApproverId { get; set; }
 
         [Required]
         public int LeaveRequestId { get; set; }
@@ -24,10 +23,10 @@ namespace OutOfOffice.Core.Entities
         [Required]
         public RequestStatus Status { get; set; } = RequestStatus.New;
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         [ForeignKey("ApproverId")]
-        public Employee Approver { get; set; }
+        public Employee? Approver { get; set; }
 
         [ForeignKey("LeaveRequestId")]
         public LeaveRequest LeaveRequest { get; set; }

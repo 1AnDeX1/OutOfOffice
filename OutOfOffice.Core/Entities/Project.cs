@@ -33,5 +33,7 @@ namespace OutOfOffice.Core.Entities
 
         [Required]
         public ActivityStatus Status { get; set; }
+
+        public ICollection<ProjectAssignment> ProjectAssignments { get; set; }
     }
 }

@@ -34,6 +34,20 @@
     <button class="btn-search" type="submit" style="border-color:white">Search</button>
 </form>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -63,6 +77,7 @@
             </th>
             <th>Comment</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -75,13 +90,25 @@
                 <td>@item.Status</td>
                 <td>@item.Comment</td>
                 <td>
-                    <a asp-action="Update" asp-route-id="@item.ID">Update</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    @if (item.Status == RequestStatus.New)
+                    {
+                        <form asp-action="Approve" method="post">
+                            <input type="hidden" name="id" value="@item.ID" />
+                            <button type="submit">Approve</button>
+                        </form>
+                        <form asp-action="Reject" method="post">
+                            <input type="hidden" name="id" value="@item.ID" />
+                            <input type="text" name="rejectionComment" placeholder="Rejection Comment" />
+                            <button type="submit">Reject</button>
+                        </form>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<a asp-action="Create">Create New</a>
+

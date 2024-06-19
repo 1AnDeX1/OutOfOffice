@@ -1,8 +1,3 @@
-F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.csproj.AssemblyReference.cache
-F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.GeneratedMSBuildEditorConfig.editorconfig
-F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.AssemblyInfoInputs.cache
-F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.AssemblyInfo.cs
-F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.csproj.CoreCompileInputs.cache
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\bin\Debug\net8.0\OutOfOffice.Application.deps.json
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\bin\Debug\net8.0\OutOfOffice.Application.dll
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\bin\Debug\net8.0\OutOfOffice.Application.pdb
@@ -10,9 +5,14 @@ F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\bin\Debug\net8.0\OutOf
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\bin\Debug\net8.0\OutOfOffice.Data.dll
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\bin\Debug\net8.0\OutOfOffice.Data.pdb
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\bin\Debug\net8.0\OutOfOffice.Core.pdb
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.csproj.AssemblyReference.cache
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.AssemblyInfoInputs.cache
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.AssemblyInfo.cs
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.csproj.CoreCompileInputs.cache
+F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.sourcelink.json
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOff.3793FE01.Up2Date
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.dll
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\refint\OutOfOffice.Application.dll
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.pdb
 F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\ref\OutOfOffice.Application.dll
-F:\Work\SmartBusiness\OutOfOffice\OutOfOffice.Application\obj\Debug\net8.0\OutOfOffice.Application.sourcelink.json

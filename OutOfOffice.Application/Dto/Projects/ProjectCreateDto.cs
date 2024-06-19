@@ -12,12 +12,19 @@ namespace OutOfOffice.Application.Dto.Projects
     {
         [Required]
         public ProjectType ProjectType { get; set; }
+
         [Required]
+        [MyStartDateValidation]
         public DateTime StartDate { get; set; }
+
+        [MyStartDateValidation]
         public DateTime? EndDate { get; set; }
+
         [Required]
         public int ProjectManagerId { get; set; }
+
         public string Comment { get; set; }
+
         [Required]
         public ActivityStatus Status { get; set; }
     }

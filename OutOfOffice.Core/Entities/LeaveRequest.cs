@@ -27,7 +27,7 @@ namespace OutOfOffice.Core.Entities
         [Required]
         public DateTime EndDate { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         [Required]
         public RequestStatus Status { get; set; } = RequestStatus.New;

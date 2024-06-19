@@ -4,10 +4,12 @@ using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
 using OutOfOffice.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OutOfOffice.Core.Enums;
 
 namespace OutOfOffice.Application.Services
 {
@@ -15,12 +17,15 @@ namespace OutOfOffice.Application.Services
     {
         private readonly OutOfOfficeDbContext _context;
         private readonly IEmployeeService _employeeService;
+        private readonly IApprovalRequestService _approvalRequestService;
 
         public LeaveRequestService(OutOfOfficeDbContext context,
-            IEmployeeService employeeService) 
+            IEmployeeService employeeService,
+            IApprovalRequestService approvalRequestService) 
         {
             _context = context;
             _employeeService = employeeService;
+            _approvalRequestService = approvalRequestService;
         }
         public async Task<IList<LeaveRequest>> GetAllAsync()
         {
@@ -106,6 +111,63 @@ namespace OutOfOffice.Application.Services
         {
             _context.LeaveRequests.Update(leaveRequest);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task SubmitAsync(int leaveRequestId)
+        {
+            var leaveRequest = await _context.LeaveRequests.FindAsync(leaveRequestId);
+            if (leaveRequest == null)
+            {
+                throw new ArgumentException("Leave request not found.");
+            }
+
+            leaveRequest.Status = RequestStatus.Submitted;
+            await _context.SaveChangesAsync();
+            try
+            {
+                var approvalRequest = new ApprovalRequest
+                {
+                    LeaveRequestId = leaveRequest.ID
+                };
+                await _approvalRequestService.CreateAsync(approvalRequest);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+            
+
+            
+        }
+
+        public async Task CancelAsync(int leaveRequestId)
+        {
+            var leaveRequest = await _context.LeaveRequests.FindAsync(leaveRequestId);
+            if (leaveRequest == null)
+            {
+                throw new ArgumentException("Leave request not found.");
+            }
+
+            if (leaveRequest.Status == RequestStatus.Canceled)
+            {
+                throw new InvalidOperationException("Leave request is already canceled.");
+            }
+
+            leaveRequest.Status = RequestStatus.Canceled;
+
+            var approvalRequests = await _context.ApprovalRequests
+                .FirstOrDefaultAsync(ar => ar.LeaveRequestId == leaveRequestId);
+
+            approvalRequests.Status = RequestStatus.Canceled;
+
+            _approvalRequestService.UpdateAsync(approvalRequests);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public IList<LeaveRequest> GetAllForCurrentEmployee(IList<LeaveRequest> leaveRequests, int curUserId)
+        {
+            return leaveRequests.Where(r => r.EmployeeId == curUserId).ToList();
         }
     }
 }

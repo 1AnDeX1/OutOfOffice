@@ -15,7 +15,7 @@ namespace OutOfOffice.Application.Dto.ApprovalRequest
     {
         public int ID { get; set; }
 
-        public int ApproverId { get; set; }
+        public int? ApproverId { get; set; }
 
         public int LeaveRequestId { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OutOfOffice.Application.Dto.Employees;
 using OutOfOffice.Application.IServices;
 using OutOfOffice.Application.SortClasses;
 using OutOfOffice.Core.Entities;
@@ -107,6 +108,50 @@ namespace OutOfOffice.Application.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task<List<ProjectEmployeeDto>> GetAssignedEmployeesAsync(int projectId)
+        {
+            var assignedEmployees = await _context.ProjectAssignments
+                                                  .Where(pa => pa.ProjectId == projectId)
+                                                  .Select(pa => new ProjectEmployeeDto
+                                                  {
+                                                      Id = pa.EmployeeId,
+                                                      FullName = pa.Employee.FullName
+                                                  })
+                                                  .ToListAsync();
+            return assignedEmployees;
+        }
+
+        public async Task AssignEmployeeAsync(int projectId, int employeeId)
+        {
+            // Check if the assignment already exists
+            var existingAssignment = await _context.ProjectAssignments
+                                                   .FirstOrDefaultAsync(pa => pa.ProjectId == projectId && pa.EmployeeId == employeeId);
+
+            if (existingAssignment == null)
+            {
+                // Create a new assignment
+                var newAssignment = new ProjectAssignment
+                {
+                    ProjectId = projectId,
+                    EmployeeId = employeeId
+                };
+
+                _context.ProjectAssignments.Add(newAssignment);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task RemoveEmployeeAsync(int projectId, int employeeId)
+        {
+            var assignmentToRemove = await _context.ProjectAssignments
+                                                    .FirstOrDefaultAsync(pa => pa.ProjectId == projectId && pa.EmployeeId == employeeId);
+
+            if (assignmentToRemove != null)
+            {
+                _context.ProjectAssignments.Remove(assignmentToRemove);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 
 }

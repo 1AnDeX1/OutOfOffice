@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static OutOfOffice.Core.Enums;
+using OutOfOffice.Application.Dto.Employees;
 
 namespace OutOfOffice.Application.Dto.Projects
 {
@@ -25,5 +26,7 @@ namespace OutOfOffice.Application.Dto.Projects
         public string? Comment { get; set; }
 
         public ActivityStatus Status { get; set; }
+
+        public List<ProjectEmployeeDto>? AssignedEmployees { get; set; }
     }
 }

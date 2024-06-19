@@ -105,7 +105,7 @@ namespace OutOfOffice.Application.Services
         }
 
 
-        public async Task<bool> EmployeeExistsAsync(int employeeId)
+        public async Task<bool> EmployeeExistsAsync(int? employeeId)
         {
             return await _context.Employees.AnyAsync(e => e.Id == employeeId);
         }

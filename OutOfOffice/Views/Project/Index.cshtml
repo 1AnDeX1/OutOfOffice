@@ -49,6 +49,11 @@
     </div>
     <button class="btn-search" type="submit" style="border-color:white">Search</button>
 </form>
+@if (User.IsInRole("Project Manager") || User.IsInRole("Administrator"))
+{
+    <a asp-action="Create">Create New Project</a>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -122,15 +127,19 @@
                 <td>@item.Status</td>
                 <td>@item.Comment</td>
                 <td>
-                    <a asp-action="Update" asp-route-id="@item.ID">Update</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a href="#" onclick="deactivateProject(@item.ID)">Deactivate</a>
+                    
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    @if (User.IsInRole("Project Manager") || User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Update" asp-route-id="@item.ID">Update</a>
+                        <a href="#" onclick="deactivateProject(@item.ID)">Deactivate</a>
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-action="Create">Create New Project</a>
+
 
 <script>
     function deactivateProject(projectId) {

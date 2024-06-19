@@ -11,11 +11,15 @@ namespace OutOfOffice.Controllers
     public class ProjectController : Controller
     {
         private readonly IProjectService _projectService;
+        private readonly IEmployeeService _employeeService;
         private readonly IMapper _mapper;
 
-        public ProjectController(IProjectService projectService, IMapper mapper)
+        public ProjectController(IProjectService projectService,
+            IEmployeeService employeeService,
+            IMapper mapper)
         {
             _projectService = projectService;
+            _employeeService = employeeService;
             _mapper = mapper;
         }
 
@@ -114,10 +118,39 @@ namespace OutOfOffice.Controllers
             {
                 return NotFound();
             }
+
             var projectIndexDto = _mapper.Map<ProjectIndexDto>(project);
+
+            // Fetch assigned employees for the project
+            var assignedEmployees = await _projectService.GetAssignedEmployeesAsync(id);
+            projectIndexDto.AssignedEmployees = assignedEmployees;
+
+            // Fetch available employees (if needed for dropdown)
+            // ViewBag.AvailableEmployees = await _employeeService.GetAllAsync(); 
 
             return View(projectIndexDto);
         }
-    }
 
+        [HttpPost]
+        public async Task<IActionResult> AssignEmployee(int projectId, int employeeId)
+        {
+            // Check if the employee exists
+            var employee = await _employeeService.GetByIdAsync(employeeId);
+            if (employee == null)
+            {
+                // Handle case where employee with specified ID does not exist
+                return NotFound();
+            }
+
+            await _projectService.AssignEmployeeAsync(projectId, employeeId);
+            return RedirectToAction(nameof(Details), new { id = projectId });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveEmployee(int projectId, int employeeId)
+        {
+            await _projectService.RemoveEmployeeAsync(projectId, employeeId);
+            return RedirectToAction(nameof(Details), new { id = projectId });
+        }
+    }
 }

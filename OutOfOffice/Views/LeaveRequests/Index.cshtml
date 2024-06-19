@@ -14,13 +14,13 @@
         <input name="EmployeeId" placeholder="Employee ID" value="@ViewData["EmployeeIdFilter"]" class="form-control" />
     </div>
     <div class="form-group filter-text">
-        <label for="AbsenceReason">AbsenceReason</label>
+        <label for="AbsenceReason">Absence Reason</label>
         <select name="AbsenceReason" class="form-control">
             <option value="">All</option>
-            @foreach (AbsenceReason status in Enum.GetValues(typeof(AbsenceReason)))
+            @foreach (AbsenceReason reason in Enum.GetValues(typeof(AbsenceReason)))
             {
-                string reasonValue = status.ToString();
-                bool isSelected = ViewData["StatusFilter"]?.ToString() == reasonValue;
+                string reasonValue = reason.ToString();
+                bool isSelected = ViewData["AbsenceReasonFilter"]?.ToString() == reasonValue;
                 <option value="@reasonValue" selected="@isSelected">
                     @reasonValue
                 </option>
@@ -51,6 +51,11 @@
     </div>
     <button class="btn-search" type="submit" style="border-color:white">Search</button>
 </form>
+
+@if (User.IsInRole("Employee") || User.IsInRole("Administrator"))
+{
+    <a asp-action="Create">Create New</a>
+}
 
 <table class="table">
     <thead>
@@ -125,13 +130,25 @@
                 <td>@item.Status</td>
                 <td>@item.Comment</td>
                 <td>
-                    <a asp-action="Update" asp-route-id="@item.ID">Update</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    @if (User.IsInRole("Employee") || User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Update" asp-route-id="@item.ID">Update</a>
+                        @if (item.Status == RequestStatus.New)
+                        {
+                            <form asp-action="Submit" asp-route-id="@item.ID" method="post">
+                                <button type="submit">Submit</button>
+                            </form>
+                        }
+                        @if (item.Status == RequestStatus.Submitted)
+                        {
+                            <form asp-action="Cancel" asp-route-id="@item.ID" method="post">
+                                <button type="submit">Cancel</button>
+                            </form>
+                        }
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-<a asp-action="Create">Create New</a>

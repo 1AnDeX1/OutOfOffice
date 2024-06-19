@@ -22,7 +22,7 @@ namespace OutOfOffice.Application.Dto.LeaveRequests
 
         public DateTime EndDate { get; set; }
 
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         public RequestStatus Status { get; set; }
     }

@@ -36,9 +36,13 @@ namespace OutOfOffice.Web.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
+                    else
+                    {
+                        TempData["ErrorMessage"] = "Invalid login attempt.";
+                    }
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                TempData["ErrorMessage"] = "Invalid login attempt.";
             }
 
             return View(model);
